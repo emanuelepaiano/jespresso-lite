@@ -1,0 +1,97 @@
+{"properties": [
+  {
+    "name": "unifiApi.controller.url",
+    "type": "java.lang.String",
+    "description": "Ubiquiti Unifi Controller endpoint i.e. 'http://localhost:8443/'"
+  },
+  {
+    "name": "unifiApi.controller.username",
+    "type": "java.lang.String",
+    "description": "Ubiquiti Unifi Controller username i.e. admin"
+  },
+  {
+    "name": "jespresso.landing.path",
+    "type": "java.lang.String",
+    "description": "jEspresso landing path for ubiquiti controller alias. i.e. '/guest/s/default'"
+  },
+  {
+    "name": "jespresso.admin.path",
+    "type": "java.lang.String",
+    "description": "jEspresso path for admin backend alias i.e. '/admin'"
+  },
+  {
+    "name": "unifiApi.controller.password",
+    "type": "java.lang.String",
+    "description": "Ubiquiti Unifi Controller password"
+  },
+  {
+    "name": "unifiApi.controller.sitename",
+    "type": "java.lang.String",
+    "description": "Ubiquiti Unifi Controller site name"
+  },
+  {
+    "name": "unifiApi.controller.session.duration",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.duration'"
+  },
+  {
+    "name": "unifiApi.controller.session.hiddenMinutes",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.hiddenMinutes'"
+  },
+  {
+    "name": "unifiApi.controller.session.blockMinutes",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.blockMinutes'"
+  },
+  {
+    "name": "unifiApi.controller.session.downloadSpeed",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.downloadSpeed'"
+  },
+  {
+    "name": "unifiApi.controller.session.uploadSpeed",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.uploadSpeed'"
+  },
+  {
+    "name": "unifiApi.controller.session.quota",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.session.quota'"
+  },
+  {
+    "name": "jespresso.logs.access-sessions.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.logs.access-sessions.enable'"
+  },
+  {
+    "name": "jespresso.sessions.full_update_enable",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.sessions.full_update_enable'"
+  },
+  {
+    "name": "jespresso.sessions.cleantable.delay",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.sessions.cleantable.delay'"
+  },
+  {
+    "name": "unifiApi.controller.mock",
+    "type": "java.lang.String",
+    "description": "A description for 'unifiApi.controller.mock'"
+  },
+  {
+    "name": "jespresso.controller.cookie.update.delay",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.controller.cookie.update.delay'"
+  },
+  {
+    "name": "jespresso.api.swagger",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.api.swagger'"
+  },
+  {
+    "name": "jespresso.datasource.data.initialize",
+    "type": "java.lang.String",
+    "description": "A description for 'jespresso.datasource.data.initialize'"
+  }
+]}

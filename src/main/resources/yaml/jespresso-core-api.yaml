@@ -1,0 +1,917 @@
+swagger: "2.0"
+info:
+  description: "This is a jEspresso REST API Yaml.  You can find out more about  JEspresso [https://jespresso.github.io](http://jespresso.github.io)."
+  version: "1.0.0"
+  title: "JEspresso REST API"
+  contact:
+    email: "nixw0rm@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "jespresso.github.io"
+basePath: /
+tags:
+  - name: captive-portal-controller
+    description: Captive Portal Guest API
+  - name: access-log-controller
+    description: Access Log Controller
+  - name: administrator-controller
+    description: Administrator Controller
+  - name: info-controller
+    description: Info Controller
+  - name: jwt-authentication-controller
+    description: Jwt Authentication Controller
+  - name: session-controller
+    description: Session Controller
+paths:
+  /api/admin/accessLogs:
+    get:
+      tags:
+        - access-log-controller
+      summary: getAccessLogs
+      operationId: getAccessLogsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/api/admin/accessLogs/{id}':
+    get:
+      tags:
+        - access-log-controller
+      summary: getAccessLog
+      operationId: getAccessLogUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - access-log-controller
+      summary: deleteAccessLog
+      operationId: deleteAccessLogUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /api/admin/administrators:
+    get:
+      tags:
+        - administrator-controller
+      summary: getAdministrators
+      operationId: getAdministratorsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    post:
+      tags:
+        - administrator-controller
+      summary: addAdministrator
+      operationId: addAdministratorUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: administrator
+          description: administrator
+          required: true
+          schema:
+            $ref: '#/definitions/AdminUser'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - administrator-controller
+      summary: editAdministrator
+      operationId: editAdministratorUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: administratorDTO
+          description: administratorDTO
+          required: true
+          schema:
+            $ref: '#/definitions/AdministratorDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/api/admin/administrators/byusername/{username}':
+    get:
+      tags:
+        - administrator-controller
+      summary: getAdministratorByEmail
+      operationId: getAdministratorByEmailUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: username
+          in: path
+          description: username
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/api/admin/administrators/{id}':
+    get:
+      tags:
+        - administrator-controller
+      summary: getAdministrator
+      operationId: getAdministratorUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - administrator-controller
+      summary: deleteAdministrator
+      operationId: deleteAdministratorUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  '/api/admin/administrators/{id}/password':
+    patch:
+      tags:
+        - administrator-controller
+      summary: changePassword
+      operationId: changePasswordUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+        - in: body
+          name: password
+          description: password
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /api/admin/info/sessions/browser-count:
+    get:
+      tags:
+        - info-controller
+      summary: getSessionsBrowserCount
+      operationId: getSessionsBrowserCountUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/browser-list:
+    get:
+      tags:
+        - info-controller
+      summary: getSessionsBrowserList
+      operationId: getSessionsBrowserListUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/count:
+    get:
+      tags:
+        - info-controller
+      summary: getSessionsCount
+      operationId: getSessionsCountUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/expired/count:
+    get:
+      tags:
+        - info-controller
+      summary: getCountExpiredSessions
+      operationId: getCountExpiredSessionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/last-login:
+    get:
+      tags:
+        - info-controller
+      summary: getLastSessions
+      operationId: getLastSessionsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: lastDays
+          in: query
+          description: lastDays
+          required: false
+          type: integer
+          default: 365
+          format: int32
+        - name: page
+          in: query
+          description: page
+          required: false
+          type: integer
+          default: 0
+          format: int32
+        - name: paging
+          in: query
+          description: paging
+          required: false
+          type: boolean
+          default: false
+        - name: size
+          in: query
+          description: size
+          required: false
+          type: integer
+          default: 5
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/os-count:
+    get:
+      tags:
+        - info-controller
+      summary: getSessionsOsCount
+      operationId: getSessionsOsCountUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/os-list:
+    get:
+      tags:
+        - info-controller
+      summary: getSessionsOsList
+      operationId: getSessionsOsListUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/sessions/valid/count:
+    get:
+      tags:
+        - info-controller
+      summary: getCountValidSessions
+      operationId: getCountValidSessionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/system/info:
+    get:
+      tags:
+        - info-controller
+      summary: getSystemInfo
+      operationId: getSystemInfoUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/info/system/memory:
+    get:
+      tags:
+        - info-controller
+      summary: getSystemMemory
+      operationId: getSystemMemoryUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/sessions:
+    get:
+      tags:
+        - session-controller
+      summary: getSessions
+      operationId: getSessionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - session-controller
+      summary: updateSession
+      operationId: updateSessionUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: session
+          description: session
+          required: true
+          schema:
+            $ref: '#/definitions/Session'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/sessions/expired:
+    get:
+      tags:
+        - session-controller
+      summary: getExpiredSessions
+      operationId: getExpiredSessionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/admin/sessions/valid:
+    get:
+      tags:
+        - session-controller
+      summary: getValidSessions
+      operationId: getValidSessionsUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  '/api/admin/sessions/{id}':
+    get:
+      tags:
+        - session-controller
+      summary: getSession
+      operationId: getSessionUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - session-controller
+      summary: deleteSession
+      operationId: deleteSessionUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+    patch:
+      tags:
+        - session-controller
+      summary: updateSession
+      operationId: updateSessionUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: '#/definitions/SessionPatchRequestDTO'
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /api/authenticate:
+    post:
+      tags:
+        - jwt-authentication-controller
+      summary: createAuthenticationToken
+      operationId: createAuthenticationTokenUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: authenticationRequest
+          description: authenticationRequest
+          required: true
+          schema:
+            $ref: '#/definitions/JwtRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /api/authorize-guest:
+    post:
+      tags:
+        - captive-portal-controller
+      summary: Request access for a given device
+      operationId: authorizeDeviceUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/AuthorizeDeviceRequestDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+          examples:
+            application/json:
+              {
+                  "response": 200,
+                  "description": "200 OK",
+                  "payload": {
+                      "macAddress": "FF:FF:FF:F1",
+                      "minutesLeft": 59,
+                      "secondsLeft": 59,
+                      "expireOn": "2020-09-02 17:16:46",
+                      "lastLogin": "2020-09-02 16:16:46",
+                      "valid": true
+                  }
+              }
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      deprecated: false
+definitions:
+  AdminUser:
+    type: object
+    properties:
+      creationDate:
+        type: string
+      email:
+        type: string
+      enabled:
+        type: boolean
+      fullName:
+        type: string
+      id:
+        type: integer
+        format: int64
+      lastModification:
+        type: string
+      password:
+        type: string
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/Role'
+    title: AdminUser
+  AdministratorDTO:
+    type: object
+    properties:
+      creationDate:
+        type: string
+      email:
+        type: string
+      enabled:
+        type: boolean
+      fullName:
+        type: string
+      id:
+        type: integer
+        format: int64
+      lastModification:
+        type: string
+    title: AdministratorDTO
+  AuthorizeDeviceRequestDTO:
+    type: object
+    properties:
+      acceptTou:
+        type: boolean
+        example: "true"
+      accessPointMacAddress:
+        type: string
+        example: "FF:FF:FF:FF:FF:FF"
+      browser:
+        type: string
+        example: "Firefox"
+      email:
+        type: string
+        example: "john@doe.com"
+      ipAddress:
+        type: string
+        example: "10.0.0.253"
+      macAddress:
+        type: string
+        example: "FF:FF:FF:FF:FF:F3"
+      operatingSystem:
+        type: string
+        example: "Linux"
+    title: AuthorizeDeviceRequestDTO
+  JwtRequest:
+    type: object
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    title: JwtRequest
+  Privilege:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/Role'
+    title: Privilege
+  Role:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      privileges:
+        type: array
+        items:
+          $ref: '#/definitions/Privilege'
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/AdminUser'
+    title: Role
+  Session:
+    type: object
+    properties:
+      accesspointMac:
+        type: string
+      browser:
+        type: string
+      deviceIp:
+        type: string
+      deviceMac:
+        type: string
+      expireLoginOn:
+        type: string
+      id:
+        type: integer
+        format: int64
+      lastLoginOn:
+        type: string
+      operatingSystem:
+        type: string
+      removeSessionOn:
+        type: string
+    title: Session
+  SuccessResponse:
+    type: object
+    properties:
+      response:
+        type: integer
+        example: "200"
+      description:
+        type: string
+        example: "OK"
+      payload:
+        type: object
+    title: SuccessResponse
+  SessionPatchRequestDTO:
+    type: object
+    properties:
+      expireSessionOn:
+        type: string
+      removeSessionOn:
+        type: string
+    title: SessionPatchRequestDTO

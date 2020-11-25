@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  jespresso:
+    container_name: jespresso-be-postgres
+    restart: on-failure
+    image: jespresso-be-postgresql
+    build: ../
+    ports:
+      - "8080:8080"
+    network_mode: host
+    depends_on:
+      - dbpostgresql
+    env_file:
+      - ./env/jespresso-be-postgresql.env
+  dbpostgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=jespresso

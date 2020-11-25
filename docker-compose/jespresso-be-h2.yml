@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  jespresso:
+    container_name: jespresso-be-h2
+    restart: on-failure
+    image: jespresso-be-h2-inmemory
+    build: ../
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./env/jespresso-be-h2.env

@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  jespresso:
+    container_name: jespresso-be-mysql
+    restart: always
+    image: jespresso-be-mysql
+    build: ../
+    ports:
+      - "8080:8080"
+    network_mode: host
+    depends_on:
+      - mysql-docker
+    env_file:
+      - ./env/jespresso-be-mysql.env
+  mysql-docker:
+    container_name: mysql8
+    image: mysql:8.0
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: jespresso
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+#      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - '3306:3306'
