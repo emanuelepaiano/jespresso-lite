@@ -7,4 +7,7 @@ JEspresso is an modern and customizable Espresso fork, written in Java/Typescrip
 It does not require any external web server and it can runs as a standalone application.
 
 
-INSTALLATION DOCS: https://jespresso.github.io/docs.html
+HOMEPAGE: https://emanuelepaiano.github.io/jespresso/
+INSTALLATION DOCS: https://emanuelepaiano.github.io/jespresso/docs.html
+AUTHOR: Emanuele Paiano nixw0rm [at] gmail [dot] com
+
