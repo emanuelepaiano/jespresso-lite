@@ -6,6 +6,8 @@ JEspresso is an modern and customizable Espresso fork, written in Java/Typescrip
 
 It does not require any external web server and it can runs as a standalone application.
 
+#### WARNING: Some countries' laws, require a logging data for guests activities from wifi hotspots. This tool does not collect any data or logs, so use it at your risk. If required in your country, install a logging system by yourself. I'm not responsible for law violations!
+
 
 HOMEPAGE: https://emanuelepaiano.github.io/jespresso/
 INSTALLATION DOCS: https://emanuelepaiano.github.io/jespresso/docs.html
