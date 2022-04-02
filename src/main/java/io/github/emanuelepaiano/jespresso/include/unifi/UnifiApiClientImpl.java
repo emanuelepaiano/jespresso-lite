@@ -241,7 +241,7 @@ public class UnifiApiClientImpl implements UnifiApiClient {
 	 * @return true, if successful
 	 */
 	@Override
-	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota) {
+	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota, String apMac) {
 		try {
 			if (!this.isLogged) {
 				login();
@@ -249,7 +249,7 @@ public class UnifiApiClientImpl implements UnifiApiClient {
 			HttpHeaders requestHeaders = new HttpHeaders();
 			requestHeaders.add("Cookie", this.getCookie());
 			RequestAuthorizeGuestDTO body = new RequestAuthorizeGuestDTO(macAddress, minutes, uploadSpeed,
-					downloadSpeed, quota);
+					downloadSpeed, quota, apMac);
 			HttpEntity<RequestAuthorizeGuestDTO> requestEntity = new HttpEntity<>(body, requestHeaders);
 			String url = this.baseUrl + "/api/s/" + siteName + "/cmd/stamgr";
 			ResponseEntity<ResponseDTO> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity,

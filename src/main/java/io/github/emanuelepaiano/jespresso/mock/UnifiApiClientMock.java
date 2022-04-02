@@ -43,7 +43,7 @@ public class UnifiApiClientMock implements UnifiApiClient {
 	 * @return true, if successful
 	 */
 	@Override
-	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota) {
+	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota, String apMac) {
 		return true;
 	}
 

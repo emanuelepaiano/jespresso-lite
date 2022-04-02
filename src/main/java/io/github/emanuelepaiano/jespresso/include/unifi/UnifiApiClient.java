@@ -30,7 +30,7 @@ public interface UnifiApiClient {
 	 * @param quota the quota
 	 * @return true, if successful
 	 */
-	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota);
+	public boolean authorizeGuest(String macAddress, Long minutes, Long downloadSpeed, Long uploadSpeed, Long quota, String apClient);
 	
 	/**
 	 * Un authorize guest.

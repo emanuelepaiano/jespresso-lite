@@ -72,7 +72,7 @@ public class CaptivePortalServiceImpl implements CaptivePortalService {
 		}
 
 		if (unifiApiClient.authorizeGuest(request.getMacAddress(), sessionDurationMinutes, downloadSpeed, uploadSpeed,
-				quota)) {
+				quota, request.getAccessPointMacAddress())) {
 			Session session = generateSession(request.getMacAddress(), request.getIpAddress(),
 					request.getAccessPointMacAddress(), request.getBrowser(), request.getOperatingSystem());
 			return generateSessionInfo(sessionService.addSession(session));
