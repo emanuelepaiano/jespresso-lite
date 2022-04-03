@@ -1,0 +1,4 @@
+JEspresso v0.8.2-SNAPSHOT-STABLE
+--------------------------------
+
+- added ap_mac parameter for issue https://github.com/emanuelepaiano/jespresso-lite/issues/1

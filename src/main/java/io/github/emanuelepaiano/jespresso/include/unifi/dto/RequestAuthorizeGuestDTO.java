@@ -1,5 +1,7 @@
 package io.github.emanuelepaiano.jespresso.include.unifi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The Class RequestAuthorizeGuestDTO.
  */
@@ -8,14 +10,38 @@ public class RequestAuthorizeGuestDTO extends RequestGuestDTO {
 	/** The minutes. */
 	private Long minutes;
 	
-	/**  upload. */
+	/** The up. */
 	private Long up;
 	
-	/**  download. */
+	/** The down. */
 	private Long down;
 	
-	/** bytes. */
+	/** The bytes. */
 	private Long bytes;
+	
+	
+	/** The ap mac. */
+	@JsonProperty("ap_mac")
+	private String apMac;
+
+	/**
+	 * Gets the ap mac.
+	 *
+	 * @return the ap mac
+	 */
+	public String getApMac() {
+		return apMac;
+	}
+
+	
+	/**
+	 * Sets the ap mac.
+	 *
+	 * @param apMac the new ap mac
+	 */
+	public void setApMac(String apMac) {
+		this.apMac = apMac;
+	}
 
 	/**
 	 * Gets the minutes.
@@ -99,19 +125,22 @@ public class RequestAuthorizeGuestDTO extends RequestGuestDTO {
 	/**
 	 * Instantiates a new request authorize guest DTO.
 	 *
-	 * @param mac the mac address
+	 * @param mac the mac
 	 * @param minutes the minutes
-	 * @param up the upload
-	 * @param down the download
+	 * @param up the up
+	 * @param down the down
 	 * @param bytes the bytes
+	 * @param apMac the ap mac
 	 */
-	public RequestAuthorizeGuestDTO(String mac, Long minutes, Long up, Long down, Long bytes) {
+	public RequestAuthorizeGuestDTO(String mac, Long minutes, Long up, Long down, Long bytes, String apMac) {
 		super("authorize-guest", mac);
 		this.minutes = minutes;
 		this.up = up;
 		this.down = down;
 		this.bytes = bytes;
+		this.apMac = apMac;
 	}
+
 
 	/**
 	 * To string.
@@ -121,8 +150,9 @@ public class RequestAuthorizeGuestDTO extends RequestGuestDTO {
 	@Override
 	public String toString() {
 		return "RequestAuthorizeGuestDTO [minutes=" + minutes + ", up=" + up + ", down=" + down + ", bytes=" + bytes
-				+ "]";
+				+ ", apMac=" + apMac + "]";
 	}
+
 	
 	
 }
