@@ -51,7 +51,7 @@ public class CaptivePortalController {
 		request.setOperatingSystem(UserAgentUtils.getOperatingSystem(httpRequest));
 		logger.debug(String.format(LoggerConstants.CALLED_CONTROLLER, "CaptivePortalController", "authorizeDevice",
 				request.toString()));
-		if (!request.getAcceptTou()) {
+		if (!request.getAcceptTou().booleanValue()) {
 			throw new MissingParametersException("You should accept term of use for surfing");
 		}
 		

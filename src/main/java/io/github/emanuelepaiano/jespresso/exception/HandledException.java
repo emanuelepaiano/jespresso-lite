@@ -24,7 +24,7 @@ public abstract class HandledException extends Exception {
 	 *
 	 * @param message the message
 	 */
-	public HandledException(String message) {
+	HandledException(String message) {
 		super(message);
 	}
 	

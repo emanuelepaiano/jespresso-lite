@@ -47,7 +47,7 @@ public class AlreadyExistsException extends HandledException {
 	@Override
 	public ResponseEntity<ErrorResponseDTO> getResponseEntity() {
 		logger.error(String.format(LoggerConstants.ALREADY_EXISTS_EXCEPTION, "AlreadyExistsException", "getResponseEntity()", this.itemName));
-		return new ResponseEntity<ErrorResponseDTO>(
+		return new ResponseEntity<>(
 				new ErrorResponseDTO(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.toString(), 
 						String.format("%s already exists.", this.itemName)),
 		HttpStatus.BAD_REQUEST);

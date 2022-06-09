@@ -60,7 +60,7 @@ public class AccessLogController {
 	@GetMapping("/accessLogs/{id}")
 	public ResponseEntity<Object> getAccessLog(@PathVariable("id") Long id) throws NoContentException {
 		AccessLogDTO accessLogDTO = AccessLogMapper.INSTANCE.accessLogToAccessLogDTO(accessLogService.getAccessLog(id));
-		return new ResponseEntity<Object>(
+		return new ResponseEntity<>(
 				new SuccessResponseDTO(HttpStatus.OK.value(), HttpStatus.OK.toString(), accessLogDTO), HttpStatus.OK);
 	}
 
@@ -75,7 +75,7 @@ public class AccessLogController {
 	@DeleteMapping("/accessLogs/{id}")
 	public ResponseEntity<Object> deleteAccessLog(@PathVariable("id") Long id) throws NoContentException {
 		boolean isDeleted = this.accessLogService.deleteAccessLog(id);
-		return new ResponseEntity<Object>(
+		return new ResponseEntity<>(
 				new SuccessResponseDTO(HttpStatus.OK.value(), HttpStatus.OK.toString(), isDeleted), HttpStatus.OK);
 	}
 }
